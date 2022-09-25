@@ -1,3 +1,4 @@
+package ex1;
 import java.util.ArrayList;
 import java.util.List;
 public class Etudiant{
@@ -63,7 +64,7 @@ public class Etudiant{
     }
     @Override
     public String toString() {
-        return "Cin"+cin+"Nom : "+nom+"\nPrenom : "+prenom+"\nMoy : "+getMoy()+" "+resultat();
+        return "Cin ; "+cin+"\nNom : "+nom+"\nPrenom : "+prenom+"\nMoy : "+getMoy()+" "+resultat();
     }
     
 }
