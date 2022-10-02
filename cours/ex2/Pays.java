@@ -8,6 +8,11 @@ public class Pays {
         this.nom = nom;
         mapVille = new HashMap<>();
     }
+    private void update(){
+        for (Ville v : mapVille.keySet()) {
+            mapVille.replace(v, mapVille.get(v), v.nbrHabitant());
+        }
+    }
     public void ajouterVille(Ville v){
          mapVille.put(v, v.nbrHabitant());
     }
@@ -18,6 +23,7 @@ public class Pays {
         }
     }
     public int getNbrHabitant(){
+        update();
         int s=0;
         for (Ville v : mapVille.keySet()) {
             s+=mapVille.get(v);
@@ -33,6 +39,7 @@ public class Pays {
         return null;
     }
     public Ville rechercheMax(){
+        update();
         Ville v = (Ville)mapVille.keySet().toArray()[0];
         for (Ville ville  : mapVille.keySet()) {
             if(mapVille.get(v)<mapVille.get(ville)){
