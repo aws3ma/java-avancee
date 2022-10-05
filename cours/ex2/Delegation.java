@@ -1,8 +1,13 @@
 public class Delegation {
     private String nom;
-
     private int nbrHabitant;
     private int max;
+
+    public Delegation(String nom, int nbrHabitant, int max) {
+        this.nom = nom;
+        this.nbrHabitant = nbrHabitant;
+        this.max = max;
+    }
 
     public boolean setNbrHabitant(int nbrHabitant) {
         if (nbrHabitant <= max) {
@@ -18,12 +23,6 @@ public class Delegation {
 
     public int getNbrHabitant() {
         return nbrHabitant;
-    }
-
-    public Delegation(String nom, int nbrHabitant, int max) {
-        this.nom = nom;
-        this.nbrHabitant = nbrHabitant;
-        this.max = max;
     }
 
     @Override

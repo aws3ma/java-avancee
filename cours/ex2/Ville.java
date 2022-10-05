@@ -3,11 +3,6 @@ import java.util.List;
 
 public class Ville {
     private String nom;
-
-    public String getNom() {
-        return nom;
-    }
-
     private int max;
     private List<Delegation> listDelegation;
 
@@ -15,6 +10,10 @@ public class Ville {
         this.nom = nom;
         this.max = max;
         listDelegation = new ArrayList<>();
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public boolean ajouterDelegation(Delegation d) {
@@ -47,15 +46,17 @@ public class Ville {
         }
         return null;
     }
-    public Delegation rechercheMax(){
+
+    public Delegation rechercheMax() {
         Delegation d = listDelegation.get(0);
         for (Delegation delegation : listDelegation) {
-            if (delegation.getNbrHabitant()>d.getNbrHabitant()) {
-                d=delegation;
+            if (delegation.getNbrHabitant() > d.getNbrHabitant()) {
+                d = delegation;
             }
         }
         return d;
     }
+
     @Override
     public String toString() {
         return "Nom : " + nom + "\nNombre habitant : " + nbrHabitant();
