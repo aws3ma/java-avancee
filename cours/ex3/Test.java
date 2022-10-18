@@ -2,11 +2,6 @@ import java.sql.SQLException;
 
 class Test {
     public static void main(String[] args) throws SQLException {
-        // Connexion cnx = new Connexion();
-        // cnx.getInstance();
-        // Connexion cnx = new Connexion();
-        // Connection cnt = cnx.getInstance();
-        // System.out.println(cnt);
         Traitement t = new Traitement();
         // Produit p = new Produit("P3", "Produit 3", "Produit trois", 100f);
         t.selectAllProduit();
