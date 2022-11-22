@@ -25,7 +25,7 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
 
     public MyApp() {
         setTitle("Ex4");
-        setSize(1366, 700);
+        setSize(1050, 700);
         setLayout(null);
         setVisible(true);
         Color formColor = new Color(53, 59, 72);
@@ -36,7 +36,7 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
         Font textFont = new Font("arial", Font.PLAIN, 15);
 
         title = new JLabel("Formulaire");
-        title.setBounds(550, 40, 300, 50);
+        title.setBounds(525, 40, 300, 50);
         title.setFont(titleFont);
         title.setForeground(Color.BLUE);
         add(title);
@@ -94,7 +94,7 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
         checkFemale.setForeground(Color.BLACK);
         add(checkFemale);
 
-        nationalite = new JLabel("nationalite");
+        nationalite = new JLabel("Nationalite");
         nationalite.setBounds(250, 300, 150, 30);
         nationalite.setFont(labelFont);
         nationalite.setForeground(Color.BLACK);
@@ -161,13 +161,7 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
         Annuler.setForeground(Color.BLACK);
         Annuler.addActionListener(this);
         add(Annuler);
-        tout = new JTextArea();
-        tout.setFont(new Font("Arial", Font.PLAIN, 15));
-        tout.setSize(300, 400);
-        tout.setLocation(850, 100);
-        tout.setText("");
-        tout.setEditable(false);
-        add(tout);
+        
         setVisible(true);
 
     }
@@ -192,7 +186,7 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
                 loisir= loisir+ dance.getSelectedObjects()[0] + "\t";
             loisir= loisir+ "\n";
             String adr = "Address : " + txtAddress.getText();
-            tout.setText(data + gender + nationalite + loisir + adr);
+            System.out.println(data + gender + nationalite + loisir + adr);
             tout.setEditable(false);
         }
         if (e.getSource() == Annuler) {
