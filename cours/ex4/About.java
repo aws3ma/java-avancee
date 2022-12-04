@@ -4,38 +4,41 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import classes.Personne;
+
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.CheckboxGroup;
 import java.awt.Checkbox;
 
-public class MyApp extends JFrame implements ActionListener, ItemListener {
-    JLabel title, nom, prenom, age, gender, nationalite, loisir, adress;
-    JTextField txtNom, txtprenom, txtage;
-    JTextArea txtAddress, tout;
-    Checkbox checkMale, checkFemale, sport, music, dance;
-    CheckboxGroup genderCheckbox;
-    Choice nationchoices;
-    JButton ok, Annuler;
+public class About extends JPanel implements ActionListener, ItemListener {
+    private JLabel title, nom, prenom, age, gender, nationalite, loisir, adress;
+    private JTextField txtNom, txtprenom, txtage;
+    private JTextArea txtAddress;
+    private Checkbox checkMale, checkFemale, sport, music, dance;
+    private CheckboxGroup genderCheckbox;
+    private Choice nationchoices;
+    private JButton ok, annuler;
+    private Personne p;
 
-    public MyApp() {
-        setTitle("Ex4");
-        setSize(1050, 700);
-        setLayout(null);
-        setVisible(true);
-        Color formColor = new Color(53, 59, 72);
-        setBackground(formColor);
+    public Personne getP() {
+        return p;
+    }
 
+    public About() {
+        this.setSize(1050, 700);
+        this.setLayout(null);
         Font titleFont = new Font("arial", Font.BOLD, 25);
         Font labelFont = new Font("arial", Font.PLAIN, 18);
         Font textFont = new Font("arial", Font.PLAIN, 15);
 
-        title = new JLabel("Formulaire");
+        title = new JLabel("About");
         title.setBounds(525, 40, 300, 50);
         title.setFont(titleFont);
         title.setForeground(Color.BLUE);
@@ -146,55 +149,50 @@ public class MyApp extends JFrame implements ActionListener, ItemListener {
         txtAddress.setFont(labelFont);
         add(txtAddress);
 
-        ok = new JButton("Envoyer");
-        ok.setBounds(400, 550, 150, 30);
+        ok = new JButton("Valider");
+        ok.setBounds(350, 520, 150, 30);
         ok.setFont(labelFont);
         ok.setBackground(Color.GREEN);
         ok.setForeground(Color.BLACK);
         ok.addActionListener(this);
         add(ok);
 
-        Annuler = new JButton("Annuler");
-        Annuler.setBounds(560, 550, 150, 30);
-        Annuler.setFont(labelFont);
-        Annuler.setBackground(Color.RED);
-        Annuler.setForeground(Color.BLACK);
-        Annuler.addActionListener(this);
-        add(Annuler);
-        
+        annuler = new JButton("Annuler");
+        annuler.setBounds(550, 520, 150, 30);
+        annuler.setFont(labelFont);
+        annuler.setBackground(Color.RED);
+        annuler.setForeground(Color.BLACK);
+        annuler.addActionListener(this);
+        add(annuler);
+
         setVisible(true);
 
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ok) {
-
-            String gender;
-            String data = "Nom : " + txtNom.getText() + "\n" + "Prenom : " + txtprenom.getText() + "\n" + "Age : "
-                    + txtage.getText() + "\n";
+            p = new Personne();
+            p.setNom(txtNom.getText());
+            p.setPrenom(txtprenom.getText());
+            p.setAge(txtage.getText());
             if (checkMale.getState() == true)
-                gender = "Gender : Male" + "\n";
+                p.setSexe("Male");
             else
-                gender = "Gender : Female" + "\n";
-            String nationalite = "Nationalite : " + nationchoices.getSelectedItem() + "\n";
-            String loisir= "Loisir : ";
+                p.setSexe("Female");
+            p.setNationalite(nationchoices.getSelectedItem());
             if (sport.getState() == true)
-                loisir= loisir+ sport.getSelectedObjects()[0] + "\t";
+                p.addLoisir("Sport");
             if (music.getState() == true)
-                loisir= loisir+ music.getSelectedObjects()[0] + "\t";
+                p.addLoisir("Musique");
             if (dance.getState() == true)
-                loisir= loisir+ dance.getSelectedObjects()[0] + "\t";
-            loisir= loisir+ "\n";
-            String adr = "Address : " + txtAddress.getText();
-            System.out.println(data + gender + nationalite + loisir + adr);
-            tout.setEditable(false);
+                p.addLoisir("Dance");
+            p.addLoisir(txtAddress.getText());
         }
-        if (e.getSource() == Annuler) {
+        if (e.getSource() == annuler) {
             txtNom.setText("");
             txtprenom.setText("");
             txtAddress.setText("");
             txtage.setText("");
-            tout.setText("");
         }
     }
 
