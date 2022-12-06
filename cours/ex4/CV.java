@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import classes.Personne;
 import classes.Projet;
@@ -10,7 +11,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 public class CV extends JFrame {
-
+    private String ch="";
     public CV(Personne p, ArrayList<Stage> stages, ArrayList<Projet> projets, ArrayList<String> competances) {
         this.setSize(1050, 700);
         this.setLayout(null);
@@ -18,7 +19,7 @@ public class CV extends JFrame {
         add(addJlabel(p.getPrenom(), 200, 100));
         add(addJlabel(p.getSexe(), 300, 100));
         add(addJlabel(p.getNationalite(), 400, 100));
-        add(addJlabel(p.getAge(), 450, 100));
+        add(addJlabel(p.getAge(), 500, 100));
         add(addJlabel(p.getAdr(), 100, 150));
         int x = 100;
         for (String l : p.getLoisir()) {
@@ -32,7 +33,7 @@ public class CV extends JFrame {
             add(addJlabel(s.getTache(), 300, y));
             y += 50;
         }
-
+        
         for(Projet pr : projets){
             add(addJlabel(pr.getTitre(), 100, y));
             add(addJlabel(pr.getLangages(), 200, y));
@@ -47,8 +48,9 @@ public class CV extends JFrame {
             }else{
                 x+=100;
             }
-
+            
         }
+        JOptionPane.showMessageDialog(this,ch);  
         setVisible(true);
     }
 
@@ -58,6 +60,7 @@ public class CV extends JFrame {
         jl.setBounds(x, y, 150, 30);
         jl.setFont(labelFont);
         jl.setForeground(Color.BLACK);
+        ch+=text+"\n";
         return jl;
     }
 }
